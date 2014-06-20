@@ -10,6 +10,7 @@ gem "mime-types"
 gem "awesome_nested_set", "2.1.6"
 gem 'oauth2'
 gem 'json'
+gem 'pg'
 
 # Optional gem for LDAP authentication
 group :ldap do
