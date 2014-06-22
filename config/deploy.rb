@@ -2,16 +2,12 @@ require "bundler/capistrano"
 
 server "85.159.213.27", :web, :app, :db, primary: true
 
-# fix bundle issue
-set :default_environment, {
-  'PATH' => "/opt/ruby-enterprise/bin/:$PATH"
-}
-
 set :application, "IceQueen"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :default_shell, '/bin/bash -l'
 
 set :scm, "git"
 set :repository, "git@github.com:fractaldirk/#{application}.git"
