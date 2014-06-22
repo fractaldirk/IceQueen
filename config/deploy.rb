@@ -2,6 +2,9 @@ require "rvm/capistrano"
 set :bundle_dir, "/usr/local/rvm/gems/ruby-1.9.3-p125"
 require "bundler/capistrano"
 
+# set the ruby version
+set :rvm_ruby_string, 'ruby-1.9.3-p125'
+
 server "85.159.213.27", :web, :app, :db, primary: true
 
 set :application, "IceQueen"
