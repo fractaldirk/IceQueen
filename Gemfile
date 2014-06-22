@@ -83,4 +83,5 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano', '2.14.2'
+gem 'rvm-capistrano'
 gem 'net-ssh', '2.7.0'

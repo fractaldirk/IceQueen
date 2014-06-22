@@ -1,3 +1,4 @@
+require "rvm/capistrano"
 require "bundler/capistrano"
 
 server "85.159.213.27", :web, :app, :db, primary: true
