@@ -334,10 +334,10 @@ class AccountController < ApplicationController
     end
   end
 
-  def account_pending(user, redirect_path=signin_path)
+  def account_pending(redirect_path=signin_path) # took out (user) argument
     if Setting.self_registration == '1'
       flash[:error] = l(:notice_account_not_activated_yet, :url => activation_email_path)
-      session[:registered_user_id] = user.id
+      # session[:registered_user_id] = user.id
     else
       flash[:error] = l(:notice_account_pending)
     end
