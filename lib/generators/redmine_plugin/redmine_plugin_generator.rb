@@ -7,7 +7,7 @@ class RedminePluginGenerator < Rails::Generators::NamedBase
     super
     @plugin_name = file_name.underscore
     @plugin_pretty_name = plugin_name.titleize
-    @plugin_path = "public/plugins/#{plugin_name}"
+    @plugin_path = "plugins/#{plugin_name}"
   end
 
   def copy_templates

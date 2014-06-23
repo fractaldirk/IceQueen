@@ -5076,3 +5076,96 @@ ActionController::RoutingError (uninitialized constant RedmineOauthController):
   /home/circle/.rvm/rubies/ruby-2.0.0-p481/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
 
 
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-23 11:40:48 +0200
+Processing by WelcomeController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+Creating scope :sorted. Overwriting existing method User.sorted.
+  [1m[35mSetting Load (0.2ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'rest_api_enabled' LIMIT 1
+  [1m[36mAnonymousUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."type" IN ('AnonymousUser') LIMIT 1[0m
+  Current user: anonymous
+  [1m[35mSetting Load (0.2ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'login_required' LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'force_default_language_for_anonymous' LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" WHERE "roles"."builtin" = 2 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT "news"."id" AS t0_r0, "news"."project_id" AS t0_r1, "news"."title" AS t0_r2, "news"."summary" AS t0_r3, "news"."description" AS t0_r4, "news"."author_id" AS t0_r5, "news"."created_on" AS t0_r6, "news"."comments_count" AS t0_r7, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."inherit_members" AS t1_r12, "users"."id" AS t2_r0, "users"."login" AS t2_r1, "users"."hashed_password" AS t2_r2, "users"."firstname" AS t2_r3, "users"."lastname" AS t2_r4, "users"."mail" AS t2_r5, "users"."admin" AS t2_r6, "users"."status" AS t2_r7, "users"."last_login_on" AS t2_r8, "users"."language" AS t2_r9, "users"."auth_source_id" AS t2_r10, "users"."created_on" AS t2_r11, "users"."updated_on" AS t2_r12, "users"."type" AS t2_r13, "users"."identity_url" AS t2_r14, "users"."mail_notification" AS t2_r15, "users"."salt" AS t2_r16, "users"."must_change_passwd" AS t2_r17 FROM "news" LEFT OUTER JOIN "projects" ON "projects"."id" = "news"."project_id" LEFT OUTER JOIN "users" ON "users"."id" = "news"."author_id" AND "users"."type" IN ('User', 'AnonymousUser') WHERE (((projects.status <> 9 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='news')) AND (projects.is_public = 't'))) ORDER BY news.created_on DESC LIMIT 5[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE (((projects.status <> 9) AND (projects.is_public = 't'))) ORDER BY created_on DESC LIMIT 5
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'welcome_text' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'app_title' LIMIT 1
+  Rendered welcome/index.html.erb within layouts/base (67.8ms)
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'ui_theme' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'self_registration' LIMIT 1
+Completed 200 OK in 517.1ms (Views: 94.0ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2014-06-23 11:40:51 +0200
+Creating scope :system. Overwriting existing method Enumeration.system.
+Processing by AccountController#login as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+  [1m[35mAnonymousUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."type" IN ('AnonymousUser') LIMIT 1
+  Current user: anonymous
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'openid' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'autologin' LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'lost_password' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'plugin_redmine_omniauth_google' LIMIT 1
+  Rendered public/plugins/redmine_omniauth_google/app/views/hooks/_view_account_login_bottom.html.erb (3.6ms)
+  Rendered account/login.html.erb within layouts/base (11.7ms)
+Completed 200 OK in 20.3ms (Views: 17.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-06-23 11:40:55 +0200
+Processing by AccountController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0r5g+6ngWrwLai2K/nCJ8IPYcT80XiQRQiAaAyQIhLU=", "back_url"=>"http://localhost:3000/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login »"}
+  [1m[36m (0.1ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+  [1m[35mAnonymousUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."type" IN ('AnonymousUser') LIMIT 1
+  Current user: anonymous
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."login" = 'admin'[0m
+  [1m[35mSQL (1243.5ms)[0m  UPDATE "users" SET "last_login_on" = '2014-06-23 11:40:55.821846' WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."id" = 1
+Successful authentication for 'admin' from 127.0.0.1 at 2014-06-23 09:40:57 UTC
+Redirected to http://localhost:3000/
+Completed 302 Found in 1256.3ms (ActiveRecord: 1244.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-23 11:40:57 +0200
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'session_lifetime' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'session_timeout' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."status" = 1 AND "users"."id" = ? LIMIT 1  [["id", 1]]
+  Current user: admin (id=1)
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'force_default_language_for_loggedin' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT "news"."id" AS t0_r0, "news"."project_id" AS t0_r1, "news"."title" AS t0_r2, "news"."summary" AS t0_r3, "news"."description" AS t0_r4, "news"."author_id" AS t0_r5, "news"."created_on" AS t0_r6, "news"."comments_count" AS t0_r7, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."inherit_members" AS t1_r12, "users"."id" AS t2_r0, "users"."login" AS t2_r1, "users"."hashed_password" AS t2_r2, "users"."firstname" AS t2_r3, "users"."lastname" AS t2_r4, "users"."mail" AS t2_r5, "users"."admin" AS t2_r6, "users"."status" AS t2_r7, "users"."last_login_on" AS t2_r8, "users"."language" AS t2_r9, "users"."auth_source_id" AS t2_r10, "users"."created_on" AS t2_r11, "users"."updated_on" AS t2_r12, "users"."type" AS t2_r13, "users"."identity_url" AS t2_r14, "users"."mail_notification" AS t2_r15, "users"."salt" AS t2_r16, "users"."must_change_passwd" AS t2_r17 FROM "news" LEFT OUTER JOIN "projects" ON "projects"."id" = "news"."project_id" LEFT OUTER JOIN "users" ON "users"."id" = "news"."author_id" AND "users"."type" IN ('User', 'AnonymousUser') WHERE (projects.status <> 9 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='news')) ORDER BY news.created_on DESC LIMIT 5
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (projects.status <> 9) ORDER BY created_on DESC LIMIT 5[0m
+  [1m[35mToken Load (0.1ms)[0m  SELECT "tokens".* FROM "tokens" WHERE "tokens"."user_id" = 1 AND (action='feeds') LIMIT 1
+  Rendered welcome/index.html.erb within layouts/base (58.6ms)
+  [1m[36mUserPreference Load (0.2ms)[0m  [1mSELECT "user_preferences".* FROM "user_preferences" WHERE "user_preferences"."user_id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "members"."id" AS t0_r0, "members"."user_id" AS t0_r1, "members"."project_id" AS t0_r2, "members"."created_on" AS t0_r3, "members"."mail_notification" AS t0_r4, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."inherit_members" AS t1_r12, "roles"."id" AS t2_r0, "roles"."name" AS t2_r1, "roles"."position" AS t2_r2, "roles"."assignable" AS t2_r3, "roles"."builtin" AS t2_r4, "roles"."permissions" AS t2_r5, "roles"."issues_visibility" AS t2_r6 FROM "members" LEFT OUTER JOIN "projects" ON "projects"."id" = "members"."project_id" LEFT OUTER JOIN "member_roles" ON "member_roles"."member_id" = "members"."id" LEFT OUTER JOIN "roles" ON "roles"."id" = "member_roles"."role_id" WHERE "members"."user_id" = 1 AND (projects.status<>9) ORDER BY projects.name
+Completed 200 OK in 97.0ms (Views: 87.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2014-06-23 11:40:58 +0200
+Processing by AdminController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."status" = 1 AND "users"."id" = ? LIMIT 1  [["id", 1]]
+  Current user: admin (id=1)
+  [1m[36mRole Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "roles" WHERE "roles"."builtin" = 0 LIMIT 1[0m
+  Rendered admin/_menu.html.erb (3.9ms)
+  Rendered admin/index.html.erb within layouts/admin (5.4ms)
+  [1m[35mUserPreference Load (0.2ms)[0m  SELECT "user_preferences".* FROM "user_preferences" WHERE "user_preferences"."user_id" = 1 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "members"."id" AS t0_r0, "members"."user_id" AS t0_r1, "members"."project_id" AS t0_r2, "members"."created_on" AS t0_r3, "members"."mail_notification" AS t0_r4, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."inherit_members" AS t1_r12, "roles"."id" AS t2_r0, "roles"."name" AS t2_r1, "roles"."position" AS t2_r2, "roles"."assignable" AS t2_r3, "roles"."builtin" AS t2_r4, "roles"."permissions" AS t2_r5, "roles"."issues_visibility" AS t2_r6 FROM "members" LEFT OUTER JOIN "projects" ON "projects"."id" = "members"."project_id" LEFT OUTER JOIN "member_roles" ON "member_roles"."member_id" = "members"."id" LEFT OUTER JOIN "roles" ON "roles"."id" = "member_roles"."role_id" WHERE "members"."user_id" = 1 AND (projects.status<>9) ORDER BY projects.name[0m
+  Rendered layouts/base.html.erb (7.9ms)
+Completed 200 OK in 20.6ms (Views: 16.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/plugins" for 127.0.0.1 at 2014-06-23 11:41:00 +0200
+Processing by AdminController#plugins as HTML
+  [1m[35m (0.2ms)[0m  SELECT MAX("settings"."updated_on") AS max_id FROM "settings" 
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."status" = 1 AND "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Current user: admin (id=1)
+  Rendered admin/plugins.html.erb within layouts/admin (1.6ms)
+  Rendered admin/_menu.html.erb (2.6ms)
+  [1m[35mUserPreference Load (0.2ms)[0m  SELECT "user_preferences".* FROM "user_preferences" WHERE "user_preferences"."user_id" = 1 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "members"."id" AS t0_r0, "members"."user_id" AS t0_r1, "members"."project_id" AS t0_r2, "members"."created_on" AS t0_r3, "members"."mail_notification" AS t0_r4, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."inherit_members" AS t1_r12, "roles"."id" AS t2_r0, "roles"."name" AS t2_r1, "roles"."position" AS t2_r2, "roles"."assignable" AS t2_r3, "roles"."builtin" AS t2_r4, "roles"."permissions" AS t2_r5, "roles"."issues_visibility" AS t2_r6 FROM "members" LEFT OUTER JOIN "projects" ON "projects"."id" = "members"."project_id" LEFT OUTER JOIN "member_roles" ON "member_roles"."member_id" = "members"."id" LEFT OUTER JOIN "roles" ON "roles"."id" = "member_roles"."role_id" WHERE "members"."user_id" = 1 AND (projects.status<>9) ORDER BY projects.name[0m
+  Rendered layouts/base.html.erb (8.8ms)
+Completed 200 OK in 19.4ms (Views: 15.6ms | ActiveRecord: 0.8ms)
